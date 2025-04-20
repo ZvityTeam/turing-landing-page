@@ -1,5 +1,3 @@
-import { FlipText } from "@/components/magicui/flip-text";
-
 function Hero() {
     return (
         <section id="hero" className="w-full relative">
