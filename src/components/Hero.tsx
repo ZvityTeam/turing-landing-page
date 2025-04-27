@@ -13,33 +13,21 @@ function Hero() {
                         <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-medium tracking-tighter text-balance text-center text-primary">Automate Conversations. Accelerate Conversions.</h1>
                         <p className="text-base md:text-lg text-center text-muted-foreground font-medium text-balance leading-relaxed tracking-tight">No more blank CRMs. We handle first-touch entry, so reps can focus on closing — not typing.</p>
                     </div>
-                    <div className="flex items-center gap-2.5 flex-wrap justify-center">
+                    {/* <div className="flex items-center gap-2.5 flex-wrap justify-center">
                         <a className="bg-secondary h-9 flex items-center justify-center text-sm font-normal tracking-wide rounded-full text-primary-foreground dark:text-secondary-foreground w-32 px-4 shadow-[inset_0_1px_2px_rgba(255,255,255,0.25),0_3px_3px_-1.5px_rgba(16,24,40,0.06),0_1px_1px_rgba(16,24,40,0.08)] border border-white/[0.12] hover:bg-secondary/80 transition-all ease-out active:scale-95" href="#">Try for Free</a>
                         <a className="h-10 flex items-center justify-center w-32 px-5 text-sm font-normal tracking-wide text-primary rounded-full transition-all ease-out active:scale-95 bg-white dark:bg-background border border-[#E5E7EB] dark:border-[#27272A] hover:bg-white/80 dark:hover:bg-background/80" href="#">Log in</a>
-                    </div>
-                </div>
-            </div>
-            <div className="relative px-6 mt-10">
-                <div className="relative size-full shadow-xl rounded-2xl overflow-hidden">
-                    <div className="relative block dark:hidden">
-                        <div className="group relative cursor-pointer">
-                            <div className="w-full aspect-video bg-background rounded-2xl"></div>
-                            <div className="absolute isolate inset-0 flex scale-[0.9] items-center justify-center rounded-2xl transition-all duration-200 ease-out group-hover:scale-100">
-                                <div className="flex size-28 items-center justify-center rounded-full bg-gradient-to-t from-secondary/20 to-[#ACC3F7/15] backdrop-blur-md">
-                                    <div className="relative flex size-20 scale-100 items-center justify-center rounded-full bg-gradient-to-t from-secondary to-white/10 shadow-md transition-all duration-200 ease-out group-hover:scale-[1.2]">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-play size-8 scale-100 fill-white text-white transition-transform duration-200 ease-out group-hover:scale-105" style={{ filter: "drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06))" }}><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="relative hidden dark:block">
-                        <div className="group relative cursor-pointer">
-                            <div className="w-full aspect-video bg-background rounded-2xl"></div>
-                            <div className="absolute isolate inset-0 flex scale-[0.9] items-center justify-center rounded-2xl transition-all duration-200 ease-out group-hover:scale-100">
-                                <div className="flex size-28 items-center justify-center rounded-full bg-gradient-to-t from-secondary/20 to-[#ACC3F7/15] backdrop-blur-md">
-                                    <div className="relative flex size-20 scale-100 items-center justify-center rounded-full bg-gradient-to-t from-secondary to-white/10 shadow-md transition-all duration-200 ease-out group-hover:scale-[1.2]">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-play size-8 scale-100 fill-white text-white transition-transform duration-200 ease-out group-hover:scale-105" style={{ filter: "drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06))" }}><polygon points="6 3 20 12 6 21 6 3"></polygon></svg>
+                    </div> */}
+                      <div className="w-full px-6">
+                        <div className="size-full shadow-xl rounded-2xl overflow-hidden">
+                            <div className="block">
+                                <div className="cursor-pointer">
+                                    <div className="w-full md:h-97 rounded-2xl blur-[2px] overflow-hidden">
+                                        <img 
+                                            src="/tickets.png" 
+                                            alt="Tickets Screenshot" 
+                                            className="w-full h-full object-cover object-top"
+                                            style={{ backgroundRepeat: "no-repeat", backgroundSize: "100%" }}
+                                        />
                                     </div>
                                 </div>
                             </div>
@@ -47,6 +35,7 @@ function Hero() {
                     </div>
                 </div>
             </div>
+           
         </section>
     )
 }

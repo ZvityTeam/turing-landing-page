@@ -1,27 +1,48 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef  } from 'react';
 import { TypingAnimation } from "@/components/magicui/typing-animation";
 
 function Features() {
+    const [startTyping, setStartTyping] = useState(false);
+    const collaborationRef = useRef<HTMLDivElement>(null);
     const [count, setCount] = useState(3400);
 
     useEffect(() => {
-        // Create an interval to change the number randomly
+        // Random number animation for Instant Insight Reporting
         const interval = setInterval(() => {
-          // Generate a random number between 3200 and 3600
-          const newValue = Math.floor(Math.random() * 400) + 3200;
-          setCount(newValue);
-        }, 2000); // Change every 2 seconds
-        
-        return () => clearInterval(interval);
-      }, []);
+            const newValue = Math.floor(Math.random() * 400) + 3200;
+            setCount(newValue);
+        }, 2000);
+
+        // Intersection Observer for TypingAnimation
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    setStartTyping(true);
+                    observer.disconnect(); // Stop observing once triggered
+                }
+            },
+            { threshold: 0.5 } // Trigger when 50% of the section is visible
+        );
+
+        if (collaborationRef.current) {
+            observer.observe(collaborationRef.current);
+        }
+
+        return () => {
+            clearInterval(interval);
+            if (collaborationRef.current) {
+                observer.unobserve(collaborationRef.current);
+            }
+        };
+    }, []);
     
       // Format number with commas
       const formattedCount = count.toLocaleString();
 
 
     return (
-        <section id="bento" className="flex flex-col items-center justify-center w-full relative px-5 md:px-10">
-            <div className="border-x mx-5 md:mx-10 relative"><div className="absolute top-0 -left-4 md:-left-14 h-full w-4 md:w-14 text-primary/5 bg-[size:10px_10px] [background-image:repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)]"></div>
+        <section id="bento" className="flex flex-col items-center justify-center w-full relative px-5 md:px-10 my-15">
+            <div className="border-x mx-1 md:mx-10 relative"><div className="absolute top-0 -left-4 md:-left-14 h-full w-4 md:w-14 text-primary/5 bg-[size:10px_10px] [background-image:repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)]"></div>
                 <div className="absolute top-0 -right-4 md:-right-14 h-full w-4 md:w-14 text-primary/5 bg-[size:10px_10px] [background-image:repeating-linear-gradient(315deg,currentColor_0_1px,#0000_0_50%)]"></div>
                 <div className="border-b w-full h-full p-10 md:p-14">
                     <div className="max-w-xl mx-auto flex flex-col items-center justify-center gap-2">
@@ -30,13 +51,13 @@ function Features() {
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden">
-                    <div className="flex flex-col items-start justify-end min-h-[600px] md:min-h-[500px] p-0.5 relative before:absolute before:-left-0.5 before:top-0 before:z-10 before:h-screen before:w-px before:bg-border before:content-[''] after:absolute after:-top-0.5 after:left-0 after:z-10 after:h-px after:w-screen after:bg-border after:content-[''] group cursor-pointer max-h-[400px] group">
+                    <div ref={collaborationRef} className="flex flex-col items-start justify-end min-h-[600px] md:min-h-[500px] p-0.5 relative before:absolute before:-left-0.5 before:top-0 before:z-10 before:h-screen before:w-px before:bg-border before:content-[''] after:absolute after:-top-0.5 after:left-0 after:z-10 after:h-px after:w-screen after:bg-border after:content-[''] group cursor-pointer max-h-[400px] group">
                         <div className="relative flex size-full items-center justify-center h-full overflow-hidden">
                             <div className="w-full h-full p-4 flex flex-col items-center justify-center gap-5"><div className="pointer-events-none absolute bottom-0 left-0 h-20 w-full bg-gradient-to-t from-background to-transparent z-20"></div>
                                 <div className="max-w-md mx-auto w-full flex flex-col gap-2" style={{ transform: "translateY(-75px)" }}>
                                     <div className="flex items-end justify-end gap-3">
                                         <div className="max-w-[280px] bg-secondary text-white p-4 rounded-2xl ml-auto shadow-[0_0_10px_rgba(0,0,0,0.05)]" style={{ opacity: 1, transform: "none" }}>
-                                            <p className="text-sm text-start">Hey, I need help scheduling a team meeting that works well for everyone. Any suggestions for finding an optimal time slot?</p>
+                                            <p className="text-sm text-start">Hi, I have a customer asking about a refund for a recent order. Can you help draft a response and check the order status?</p>
                                         </div>
                                         <div className="flex items-center bg-background rounded-full w-fit border border-border flex-shrink-0">
                                             <img src="https://randomuser.me/api/portraits/women/79.jpg" alt="User Avatar" className="size-8 rounded-full flex-shrink-0" />
@@ -52,7 +73,13 @@ function Features() {
                                                     <div>
                                                         <div className="text-muted-foreground prose prose-sm dark:prose-invert text-sm transition-opacity duration-300 ease-out" style={{ opacity: 1 }}>
                                                             <div>
-                                                                <p><TypingAnimation  className="text-sm font-normal text-start">Based on your calendar patterns and preferences, I recommend scheduling the team meeting for Tuesday at 2pm. This time slot has historically had the highest attendance rate, and it avoids conflicts with other recurring meetings.</TypingAnimation></p>
+                                                            {startTyping ? (
+                                                                            <TypingAnimation className="text-sm font-normal text-start">
+                                                                                Dear Customer, thank you for reaching out. Your refund for order #1234 has been processed and should reflect in 3-5 business days.
+                                                                            </TypingAnimation>
+                                                                        ) : (
+                                                                            <span className="text-sm font-normal text-start">Ready to assist...</span>
+                                                                        )}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -261,13 +288,13 @@ function Features() {
                             </div>
                             <div className="w-full absolute grid gap-10 top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/3">
                                 <div className="flex items-center h-8 justify-center gap-2 rounded-lg w-[250px] p-2 shadow-[0px_9px_5px_0px_#00000005,0px_4px_4px_0px_#00000009,0px_1px_2px_0px_#00000010] bg-secondary text-white" style={{ opacity: 1, transform: "translateX(-0.341252px)" }}>
-                                    <p className="font-medium text-sm">Bento grid</p>
+                                    <p className="font-medium text-sm">Resolve Customer Query</p>
                                 </div>
                                 <div className="flex items-center h-8 justify-center gap-2 rounded-lg w-[250px] p-2 shadow-[0px_9px_5px_0px_#00000005,0px_4px_4px_0px_#00000009,0px_1px_2px_0px_#00000010] bg-secondary/40 text-white" style={{ opacity: 1, transform: "translateX(66.375px);" }}>
-                                    <p className="font-medium text-sm">Landing Page</p>
+                                    <p className="font-medium text-sm">Escalate Technical Issue</p>
                                 </div>
                                 <div className="flex items-center h-8 justify-center gap-2 rounded-lg w-[250px] p-2 shadow-[0px_9px_5px_0px_#00000005,0px_4px_4px_0px_#00000009,0px_1px_2px_0px_#00000010] bg-secondary/20 border border-secondary border-dashed text-secondary" style={{ opacity: 1, transform: "translateX(132.75px)" }}>
-                                    <p className="font-medium text-sm">Add Task</p>
+                                    <p className="font-medium text-sm">Assign Support Ticket</p>
                                 </div>
                             </div>
                         </div>
