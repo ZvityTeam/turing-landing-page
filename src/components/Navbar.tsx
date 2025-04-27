@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 
 function Navbar() {
     const [scrolled, setScrolled] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   
     // Track scroll position and update state
     useEffect(() => {
@@ -15,6 +16,16 @@ function Navbar() {
       window.addEventListener('scroll', handleScroll, { passive: true });
       return () => window.removeEventListener('scroll', handleScroll);
     }, [scrolled]);
+
+        // Handle toggle mobile menu
+        const toggleMobileMenu = () => {
+            setMobileMenuOpen(!mobileMenuOpen);
+        };
+    
+        // Close mobile menu when clicking on a link
+        const closeMobileMenu = () => {
+            setMobileMenuOpen(false);
+        };
 
 
     return (
@@ -48,14 +59,68 @@ function Navbar() {
                         <div className="flex items-center space-x-6">
                             <a className="bg-secondary h-8 hidden md:flex items-center justify-center text-sm font-normal tracking-wide rounded-full text-primary-foreground dark:text-secondary-foreground w-fit px-4 shadow-[inset_0_1px_2px_rgba(255,255,255,0.25),0_3px_3px_-1.5px_rgba(16,24,40,0.06),0_1px_1px_rgba(16,24,40,0.08)] border border-white/[0.12]" href="#cta">Get Early Access</a>
                         </div>
-                        <button className="md:hidden border border-border size-8 rounded-md cursor-pointer flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-menu size-5"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line>
-                            </svg>
+                        <button className="md:hidden border border-border size-8 rounded-md cursor-pointer flex items-center justify-center"
+                        onClick={toggleMobileMenu}>
+                             {mobileMenuOpen ? (
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-x size-5">
+                                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                                    </svg>
+                                ) : (
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-menu size-5">
+                                        <line x1="4" x2="20" y1="12" y2="12"></line>
+                                        <line x1="4" x2="20" y1="6" y2="6"></line>
+                                        <line x1="4" x2="20" y1="18" y2="18"></line>
+                                    </svg>
+                                )}
                         </button>
                     </div>
                 </div>
             </div>
             </div>
+            {mobileMenuOpen && (
+                        <div className="md:hidden absolute bg-white/50 backdrop-blur-sm border-t border-border animate-in slide-in-from-top duration-300 top-14 w-full rounded-b-xl">
+                            <nav className="flex flex-col py-4">
+                                <a 
+                                    href="#hero" 
+                                    className="px-6 py-3 text-primary font-medium" 
+                                    onClick={closeMobileMenu}
+                                >
+                                    Home
+                                </a>
+                                <a 
+                                    href="#bento" 
+                                    className="px-6 py-3 text-primary/60 hover:text-primary" 
+                                    onClick={closeMobileMenu}
+                                >
+                                    How it Works
+                                </a>
+                                <a 
+                                    href="#features" 
+                                    className="px-6 py-3 text-primary/60 hover:text-primary" 
+                                    onClick={closeMobileMenu}
+                                >
+                                    Features
+                                </a>
+                                <a 
+                                    href="#use-cases" 
+                                    className="px-6 py-3 text-primary/60 hover:text-primary" 
+                                    onClick={closeMobileMenu}
+                                >
+                                    Use Cases
+                                </a>
+                                <div className="px-6 pt-4">
+                                    <a 
+                                        href="#cta" 
+                                        className="bg-secondary h-10 flex items-center justify-center text-sm font-normal tracking-wide rounded-full text-primary-foreground dark:text-secondary-foreground w-full px-4 shadow-[inset_0_1px_2px_rgba(255,255,255,0.25),0_3px_3px_-1.5px_rgba(16,24,40,0.06),0_1px_1px_rgba(16,24,40,0.08)] border border-white/[0.12]"
+                                        onClick={closeMobileMenu}
+                                    >
+                                        Get Early Access
+                                    </a>
+                                </div>
+                            </nav>
+                        </div>
+                    )}
         </header>
     )
 }
