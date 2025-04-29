@@ -154,7 +154,7 @@ function UseCases() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="w-full h-full p-10 md:p-14">
                     <div className="max-w-5xl mx-auto flex flex-col items-center justify-center gap-2">
-                        <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-center text-balance pb-1">Adaptable AI ChatGPT for <span className="text-blue-500">Every Industry</span></h2>
+                        <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-center text-balance pb-1">Adaptable AI for <span className="text-blue-500">Every Industry</span></h2>
                         <p className="text-muted-foreground text-center text-balance font-medium">Our easy-to-use AI Agent can be easily implemented by businesses across all sectors.</p>
                     </div>
                 </div>
