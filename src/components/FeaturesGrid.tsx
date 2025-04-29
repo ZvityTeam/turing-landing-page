@@ -63,10 +63,10 @@ export function FeaturesSectionDemo() {
       ];
   return (
     <>
-    <div id="features" className=" w-full h-full p-10 md:p-14">
+    <div id="features" className=" w-full h-full p-4 md:p-14">
                     <div className="max-w-xl mx-auto flex flex-col items-center justify-center gap-2">
                         <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-center text-balance pb-1">Everything That Makes It Click</h2>
-                        <p className="text-muted-foreground text-center text-balance font-medium">From effortless onboarding to AI that feels human — here’s what makes us more than just another CRM.</p>
+                        <p className="text-muted-foreground text-center text-balance md:font-medium">From effortless onboarding to AI that feels human — here’s what makes us more than just another CRM.</p>
                     </div>
                 </div>
     <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4  py-10 max-w-7xl mx-auto">

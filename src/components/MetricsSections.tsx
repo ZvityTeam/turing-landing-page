@@ -36,7 +36,7 @@ function MetricsSection() {
                     <div className="w-full h-full mb-5">
                     <div className="max-w-4xl mx-auto flex flex-col items-center justify-center gap-2">
                         <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-center text-balance pb-1">See the Impact</h2>
-                        <p className="text-muted-foreground text-center text-balance font-medium">Discover how TurinIQ transforms your customer support with measurable results.</p>
+                        <p className="text-muted-foreground text-center text-balance md:font-medium">Discover how TurinIQ transforms your customer support with measurable results.</p>
                     </div>
                 </div>
                     

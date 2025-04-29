@@ -47,7 +47,7 @@ function Features() {
                 <div className="border-b w-full h-full p-10 md:p-14">
                     <div className="max-w-xl mx-auto flex flex-col items-center justify-center gap-2">
                         <h2 className="text-3xl md:text-4xl font-medium tracking-tighter text-center text-balance pb-1">Empower Your Workflow with AI</h2>
-                        <p className="text-muted-foreground text-center text-balance font-medium">Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insights to streamline your operations.</p>
+                        <p className="text-muted-foreground text-center text-balance md:font-medium">Ask your AI Agent for real-time collaboration, seamless integrations, and actionable insights to streamline your operations.</p>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 overflow-hidden">
