@@ -22,7 +22,7 @@ function UseCases() {
             { title: "24/7 Customer Support", description: "Leveraging conversational AI solutions for ecommerce helps to engage customers round the clock and provide immediate answers to their common queries." },
             { title: "Boost Funnel Conversions", description: "Ecommerce chatbots can influence the buying experience with personalized recommendations and use data to drive upsell and cross-sell opportunities." },
             { title: "Re-engage Customers", description: "Using AI chatbots helps to avoid abandoned carts by reminding customers about their cart and providing additional product information." },
-            { title: "Converting Abandoned Carts", description: "A chatbot system can be an effective solution to the issue of cart abandonment, sending timely targeted reminders to encourage purchases." },
+            { title: "Provide Recommendations", description: "Many customers browse products online without buying due to uncertainty. Chatbots offer tailored suggestions to guide their purchase decisions." },
         ],
         "Telecom": [
             { title: "Answering Packaging Queries", description: "A telecom chatbot can answer questions about account balances, package validity, and current internet plans quickly and efficiently." },
